@@ -1,50 +1,36 @@
-total_runs: 5
-last_updated: '2026-06-08T18:54:28Z'
-pending_relegation:
-- player: Cleo
-  from_tier: PRM
-  to_tier: CH
-- player: Bruno
-  from_tier: PRM
-  to_tier: CH
+total_runs: 2
+last_updated: '2026-05-22T16:10:13Z'
+pending_relegation: []
 players:
   Diego:
     date_added: '2026-05-22T16:10:13Z'
-    total_wins: 287
-    total_games: 600
-    win_pct: 47.8
+    total_wins: 60
+    total_games: 100
+    win_pct: 60.0
     tier: PRM
     tier_since: '2026-05-22T16:10:13Z'
     times_last_in_l1: 0
   Alice:
     date_added: '2026-05-22T15:47:31Z'
-    total_wins: 172
-    total_games: 700
-    win_pct: 24.6
+    total_wins: 88
+    total_games: 200
+    win_pct: 44.0
     tier: PRM
     tier_since: '2026-05-22T15:47:31Z'
     times_last_in_l1: 0
   Bruno:
     date_added: '2026-05-22T15:47:31Z'
-    total_wins: 115
-    total_games: 700
-    win_pct: 16.4
+    total_wins: 48
+    total_games: 200
+    win_pct: 24.0
     tier: PRM
     tier_since: '2026-05-22T15:47:31Z'
     times_last_in_l1: 0
   Cleo:
     date_added: '2026-05-22T15:47:31Z'
-    total_wins: 256
-    total_games: 700
-    win_pct: 36.6
+    total_wins: 4
+    total_games: 200
+    win_pct: 2.0
     tier: PRM
     tier_since: '2026-05-22T15:47:31Z'
-    times_last_in_l1: 0
-  Finn:
-    date_added: '2026-06-08T17:57:49Z'
-    total_wins: 120
-    total_games: 500
-    win_pct: 24.0
-    tier: PRM
-    tier_since: '2026-06-08T17:57:49Z'
     times_last_in_l1: 0
