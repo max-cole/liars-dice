@@ -33,6 +33,12 @@ def test_apply_pending_empty_list_is_noop(minimal_lb):
 def test_detect_phase_1_when_below_top_n(minimal_lb):
     assert detect_phase(minimal_lb, top_n=4) == 1
 
+def test_detect_phase_1_when_equal_to_top_n():
+    # total == top_n means PRM is exactly full; next entrant still plays PRM and triggers relegation
+    data = {"players": {"A": {"tier": "PRM"}, "B": {"tier": "PRM"},
+                        "C": {"tier": "PRM"}, "D": {"tier": "PRM"}}}
+    assert detect_phase(data, top_n=4) == 1
+
 def test_detect_phase_2_when_between(full_two_tier_lb):
     # 4 total players, TOP_N=2: 4 > 2 and 4 <= 4 → phase 2
     assert detect_phase(full_two_tier_lb, top_n=2) == 2

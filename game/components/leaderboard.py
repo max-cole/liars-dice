@@ -30,7 +30,7 @@ def detect_phase(data: dict, top_n: int) -> int:
     Inactive players are counted — phase reflects system capacity, not active rosters.
     """
     total = len(data.get("players", {}))
-    if total < top_n:
+    if total <= top_n:
         return 1
     if total <= top_n * 2:
         return 2

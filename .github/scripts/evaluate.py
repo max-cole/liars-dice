@@ -51,6 +51,7 @@ def main():
     challenger_tier = os.environ["CHALLENGER_TIER"]
     phase = int(os.environ["PHASE"])
     n_games = int(os.environ["N_GAMES"])
+    top_n = int(os.environ["TOP_N"])
 
     with open("leaderboard.yaml") as f:
         lb = yaml.safe_load(f) or {}
@@ -102,6 +103,17 @@ def main():
 
         else:  # Phase 1: challenger enters PRM
             entry_promotions[challenger] = "PRM"
+            # If PRM is at capacity, relegate the weakest PRM player (deferred)
+            prm_players = set(get_tier_players(lb, "PRM"))
+            if len(prm_players) >= top_n:
+                prm_in_entry = {k: v for k, v in entry_results.items() if k in prm_players}
+                if prm_in_entry:
+                    entry_last = min(prm_in_entry, key=prm_in_entry.get)
+                    entry_pending.append({
+                        "player": entry_last,
+                        "from_tier": "PRM",
+                        "to_tier": "CH",
+                    })
 
     # --- PRM cascade ---
     if prm_results:
