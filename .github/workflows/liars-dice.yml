@@ -6,6 +6,9 @@ on:
     paths:
       - 'players/*'
 
+env:
+  PYTHONPATH: .
+
 jobs:
   setup:
     if: github.actor != 'github-actions[bot]'
