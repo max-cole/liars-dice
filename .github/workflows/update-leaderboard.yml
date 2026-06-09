@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: read
 
 env:
   PYTHONPATH: .
@@ -72,4 +73,11 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "ci: update leaderboard [skip ci]"
             git push
+          fi
+
+          # Delete the source PR branch (auto-delete doesn't fire for bot merges)
+          branch=$(gh api "repos/${REPOSITORY}/commits/${COMMIT_SHA}/pulls" \
+            --jq '.[0].head.ref' 2>/dev/null || echo "")
+          if [ -n "$branch" ] && [ "$branch" != "main" ]; then
+            gh api "repos/${REPOSITORY}/git/refs/heads/${branch}" --method DELETE 2>/dev/null || true
           fi
