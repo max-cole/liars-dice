@@ -297,7 +297,7 @@ def test_apply_season_results_promotes_top_to_tier_above(tmp_path):
     with open(path) as f:
         result = _yaml.safe_load(f)
     assert result["players"]["Alice"]["tier"] == "PRM"  # top CH → PRM
-    assert result["players"]["Bruno"]["tier"] == "CH"  # stays
+    assert result["players"]["Bruno"]["tier"] == "L1"  # bottom always relegates
 
 
 def test_apply_season_results_promotes_even_when_tier_above_at_capacity(tmp_path):
@@ -409,3 +409,54 @@ def test_apply_season_results_relegates_bottom(tmp_path):
         result = _yaml.safe_load(f)
     assert result["players"]["Bruno"]["tier"] == "CH"  # bottom PRM → CH
     assert result["players"]["Alice"]["tier"] == "PRM"  # stays
+
+
+def test_apply_season_results_relegates_bottom_even_when_promotion_restores_capacity(tmp_path):
+    """When CH has capacity+1 players, promoting the top still relegates the bottom."""
+    import yaml as _yaml
+
+    from game.components.leaderboard import apply_season_results
+
+    def _player(tier):
+        return {
+            "display_name": "",
+            "github_username": "",
+            "tier": tier,
+            "tier_since": "2026-01-01T00:00:00Z",
+            "date_added": "2026-01-01T00:00:00Z",
+            "times_inactive": 0,
+            "tier_stats": {},
+        }
+
+    # top_n=4, so CH capacity=4. Start with 5 in CH (capacity+1).
+    lb = {
+        "total_runs": 1,
+        "players": {
+            "P1": _player("CH"),
+            "P2": _player("CH"),
+            "P3": _player("CH"),
+            "P4": _player("CH"),
+            "P5": _player("CH"),
+        },
+        "last_updated": "2026-01-01T00:00:00Z",
+    }
+    path = str(tmp_path / "lb.yaml")
+    (tmp_path / "lb.yaml").write_text(_yaml.dump(lb))
+
+    apply_season_results(
+        wins={"P1": 50, "P2": 40, "P3": 30, "P4": 20, "P5": 0},
+        n_games=100,
+        tier="CH",
+        top_n=4,
+        path=path,
+    )
+    with open(path) as f:
+        result = _yaml.safe_load(f)
+
+    assert result["players"]["P1"]["tier"] == "PRM"  # top promotes
+    assert (
+        result["players"]["P5"]["tier"] == "L1"
+    )  # bottom relegates even though P1 leaving restored capacity
+    assert result["players"]["P2"]["tier"] == "CH"
+    assert result["players"]["P3"]["tier"] == "CH"
+    assert result["players"]["P4"]["tier"] == "CH"

@@ -184,13 +184,12 @@ def apply_season_results(
         data["players"][promoted]["tier"] = tier_above
         data["players"][promoted]["tier_since"] = now
 
-    # Relegate enough from the bottom to restore this tier to capacity.
-    # If a promotion occurred, relegate only the excess; otherwise always relegate at least 1.
+    # Always relegate at least 1 from the bottom; relegate more if over capacity after promotion.
     if tier_below:
         capacity = _TIER_CAPACITY(tier, top_n)
         remaining = [p for p in players_in_tier if p != promoted]
         if promoted:
-            excess = max(0, len(remaining) - capacity) if remaining else 0
+            excess = max(1, len(remaining) - capacity) if remaining else 0
         else:
             excess = max(1, len(remaining) - capacity) if remaining else 0
         for name in reversed(remaining):
