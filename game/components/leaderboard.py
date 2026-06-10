@@ -177,22 +177,27 @@ def apply_season_results(
     tier_above = _TIER_ABOVE.get(tier)
     tier_below = _TIER_BELOW.get(tier)
 
+    movements: list[str] = []
+
+    def _display(name: str) -> str:
+        return data["players"][name].get("display_name", name)
+
     # Promote top player unconditionally
     promoted = None
     if tier_above and players_in_tier:
         promoted = players_in_tier[0]
         data["players"][promoted]["tier"] = tier_above
         data["players"][promoted]["tier_since"] = now
+        movements.append(f"Promoted: {_display(promoted)} → {tier_above}")
 
-    # Relegate if the tier started at or above capacity (always at least 1 from a full cohort).
-    # Don't relegate if the tier ran below capacity — thin tiers should grow, not shrink.
+    # Relegate only if remaining players exceed capacity after promotion.
+    # If the tier ran at exactly capacity and promoted one out, remaining = capacity-1 — no
+    # excess, no relegation. Relegation only triggers when the tier is genuinely overcrowded
+    # (e.g. someone was promoted in from below before this tier ran).
     if tier_below:
         capacity = _TIER_CAPACITY(tier, top_n)
         remaining = [p for p in players_in_tier if p != promoted]
-        if remaining and len(players_in_tier) >= capacity:
-            excess = max(1, len(remaining) - capacity)
-        else:
-            excess = 0
+        excess = max(0, len(remaining) - capacity)
         for name in reversed(remaining):
             if excess <= 0:
                 break
@@ -202,7 +207,10 @@ def apply_season_results(
                 data["players"][name]["times_inactive"] = (
                     data["players"][name].get("times_inactive", 0) + 1
                 )
+            movements.append(f"Relegated: {_display(name)} → {tier_below}")
             excess -= 1
 
     with open(path, "w") as f:
         yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+
+    return movements
