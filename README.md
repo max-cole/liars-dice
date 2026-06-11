@@ -9,23 +9,25 @@ A Python engine for running Liar's Dice games between algorithmic players. Playe
 ### Premier
 | Player | Win % in PRM | Wins in PRM | Win % Total | Total Wins | Games |
 |--------|----------------|----------------|-------------|------------|-------|
-| Diego | 29.0 | 972 | 29.0 | 972 | 3350 |
-| Zara | 27.2 | 817 | 28.5 | 1141 | 3000 |
-| Sloane | 26.1 | 522 | 28.5 | 1140 | 2000 |
-| Eva | 19.8 | 198 | 31.4 | 1255 | 1000 |
+| Diego | 27.0 | 1174 | 27.0 | 1174 | 4350 |
+| Zara | 25.9 | 1034 | 27.2 | 1358 | 4000 |
+| Sloane | 25.4 | 762 | 27.6 | 1380 | 3000 |
+| Eva | 21.6 | 433 | 29.8 | 1490 | 2000 |
 
 ### Championship
 | Player | Win % in CH | Wins in CH | Win % Total | Total Wins | Games |
 |--------|----------------|----------------|-------------|------------|-------|
-| Remy | 20.1 | 604 | 20.1 | 604 | 3000 |
-| Bruno | 15.2 | 152 | 12.1 | 419 | 1000 |
-| Alice | 12.2 | 243 | 13.2 | 457 | 2000 |
-| Finn | 0.0 | 0 | 14.0 | 455 | 0 |
+| Finn | 31.2 | 312 | 18.0 | 767 | 1000 |
+| Remy | 23.5 | 941 | 20.9 | 1047 | 4000 |
+| Bruno | 15.2 | 305 | 12.9 | 572 | 2000 |
+| Alice | 14.6 | 437 | 14.6 | 651 | 3000 |
+| Cleo | 0.2 | 6 | 10.8 | 482 | 3000 |
 
 ### Level 1
 | Player | Win % in L1 | Wins in L1 | Win % Total | Total Wins | Games |
 |--------|----------------|----------------|-------------|------------|-------|
-| Cleo | 0.0 | 0 | 0.3 | 7 | 0 |
+| Topper | 44.4 | 444 | 44.4 | 444 | 1000 |
+| Liar², Pants on Fire | 8.5 | 85 | 8.5 | 85 | 1000 |
 
 <!-- leaderboard-end -->
 <!-- prettier-ignore-end -->
