@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.1.0 (2026-06-15)
+
+### Features
+
+- Quarter simulation script and season_utils move into game package
+  ([#34](https://github.com/after2400/liars-dice/pull/34),
+  [`23362ef`](https://github.com/after2400/liars-dice/commit/23362efa9b989daa999b75b452b2b1f72a61a447))
+
+
 ## v1.0.2 (2026-06-15)
 
 ### Bug Fixes
