@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.6.2 (2026-06-18)
+
+### Bug Fixes
+
+- **game**: Grow PRM/CH to 8 before L1 resumes growth
+  ([#76](https://github.com/after2400/liars-dice/pull/76),
+  [`34f1122`](https://github.com/after2400/liars-dice/commit/34f112247686ae5c220d780bfaddaabf8f16a42e))
+
+
 ## v1.6.1 (2026-06-18)
 
 ### Bug Fixes
