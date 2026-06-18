@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.5.1 (2026-06-18)
+
+### Bug Fixes
+
+- **game**: Scale tier capacity with player count in settle_relegations
+  ([#71](https://github.com/after2400/liars-dice/pull/71),
+  [`05af5e6`](https://github.com/after2400/liars-dice/commit/05af5e6d4b3c670722e9439d6419e4fe2f9c58aa))
+
+
 ## v1.5.0 (2026-06-18)
 
 ### Features
