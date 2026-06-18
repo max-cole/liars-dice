@@ -1,5 +1,5 @@
 total_runs: 21
-last_updated: '2026-06-18T01:30:55Z'
+last_updated: '2026-06-18T03:28:08Z'
 current_season_issue: 4
 players:
   Alice:
@@ -216,5 +216,13 @@ players:
     date_added: '2026-06-18T01:30:55Z'
     tier: L1
     tier_since: '2026-06-18T01:30:55Z'
+    times_inactive: 0
+    tier_stats: {}
+  CalCulated:
+    display_name: Cal Culatid
+    github_username: DNiev
+    date_added: '2026-06-18T03:28:08Z'
+    tier: L1
+    tier_since: '2026-06-18T03:28:08Z'
     times_inactive: 0
     tier_stats: {}
