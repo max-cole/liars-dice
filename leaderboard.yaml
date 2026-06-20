@@ -1,5 +1,5 @@
 total_runs: 45
-last_updated: '2026-06-19T12:48:05Z'
+last_updated: '2026-06-20T02:45:04Z'
 current_season_issue: 4
 players:
   Alice:
@@ -306,3 +306,11 @@ players:
         wins: 440
         games: 2000
         win_pct: 22.0
+  DeepThought:
+    display_name: Deep Thought
+    github_username: DNiev
+    date_added: '2026-06-20T02:45:04Z'
+    tier: PRM
+    tier_since: '2026-06-20T02:45:04Z'
+    times_inactive: 0
+    tier_stats: {}
