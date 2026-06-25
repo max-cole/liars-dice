@@ -1,5 +1,5 @@
 total_runs: 66
-last_updated: '2026-06-24T11:43:57Z'
+last_updated: '2026-06-25T03:17:47Z'
 current_season_issue: 4
 players:
   Alice:
@@ -334,3 +334,11 @@ players:
         wins: 564
         games: 3000
         win_pct: 18.8
+  Meg:
+    display_name: Meg Griffin
+    github_username: after2400
+    date_added: '2026-06-25T03:17:47Z'
+    tier: PRM
+    tier_since: '2026-06-25T03:17:47Z'
+    times_inactive: 0
+    tier_stats: {}
