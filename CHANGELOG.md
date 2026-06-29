@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v2.0.0 (2026-06-29)
+
+### Features
+
+- **engine**: V2.0.0 — SeriesResult API and Textual TUI
+  ([#127](https://github.com/after2400/liars-dice/pull/127),
+  [`055ae4b`](https://github.com/after2400/liars-dice/commit/055ae4b82263055a943ec26e6e65c814bbc9fcef))
+
+
 ## v1.12.2 (2026-06-25)
 
 ### Bug Fixes
