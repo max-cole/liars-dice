@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v2.1.0 (2026-06-30)
+
+### Features
+
+- **engine**: Simulation replay — deterministic re-runs with diff reports
+  ([#128](https://github.com/after2400/liars-dice/pull/128),
+  [`f6fe703`](https://github.com/after2400/liars-dice/commit/f6fe70373ce23ca524982d8490f26d8e18f1f5ca))
+
+
 ## v2.0.0 (2026-06-29)
 
 ### Features
