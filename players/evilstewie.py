@@ -8,6 +8,24 @@ from game.components.context import GameContext
 logger = logging.getLogger(__name__)
 
 
+# Decisions log: writes independently of the game logging setup.
+# Each run overwrites decisions.log so it reflects only the latest game(s).
+def _setup_decisions_logger() -> logging.Logger:
+    dlog = logging.getLogger("evilstewie.decisions")
+    dlog.propagate = False
+    if "zachaustin" not in __file__:
+        dlog.addHandler(logging.NullHandler())
+        return dlog
+    dlog.setLevel(logging.DEBUG)
+    handler = logging.FileHandler("decisions.log", mode="w", delay=True)
+    handler.setFormatter(logging.Formatter("%(message)s"))
+    dlog.addHandler(handler)
+    return dlog
+
+
+_dlog = _setup_decisions_logger()
+
+
 class EvilStewie:
     """Insufferable EV-maximizing Liar's Dice bot who has read too many poker textbooks.
 
@@ -66,6 +84,10 @@ class EvilStewie:
     LATE_GAME_AVG_DICE = 3.0
     LATE_GAME_AGGRESSION = 0.25
 
+    # Desperation threshold: openers at or below this many dice are in "panic" mode
+    # and tracked in a separate bluff bucket from comfortable openers.
+    DESPERATION_DICE = 2
+
     def __init__(self) -> None:
         self._outcomes_seen: int = 0
         # Per-player running stats for challenge threshold (mean p_holds_public at challenge time)
@@ -84,6 +106,15 @@ class EvilStewie:
         self._no_wilds_rounds: set[tuple[int, int]] = (
             set()
         )  # rounds where any face=1 bet was placed
+        # Desperation-conditioned bluff buckets: [bluffs, holds] per player
+        # Routed by the opener's dice count at opening-bid time.
+        self._desperate: dict[str, list[int]] = {}  # openers with <= DESPERATION_DICE dice
+        self._comfortable: dict[str, list[int]] = {}  # openers with > DESPERATION_DICE dice
+        # Outcome logging watermark and liar-call calibration storage
+        self._outcomes_logged: int = 0
+        self._liar_call_estimates: dict[
+            tuple[int, int], float
+        ] = {}  # (game,round) -> p_holds when ES called liar
 
     def _wilds_active(self, ctx: GameContext) -> bool:
         """Wilds are off for the whole round once any bet on 1s has been placed.
@@ -212,7 +243,13 @@ class EvilStewie:
             uncertain += total_dice - len(hand) - accounted  # dice from players with no opening bid
             for player, (bid_face, bid_qty, d) in opening_bids.items():
                 c, u = self._infer_held(
-                    bid_face, bid_qty, d, total_dice, face, wilds, self._bluff_rate(player)
+                    bid_face,
+                    bid_qty,
+                    d,
+                    total_dice,
+                    face,
+                    wilds,
+                    self._conditional_bluff_rate(player, d),
                 )
                 certain += c
                 uncertain += u
@@ -311,6 +348,25 @@ class EvilStewie:
             return 0.0
         return self._bluff_sum[player] / n
 
+    def _conditional_bluff_rate(self, player: str, opener_dice_count: int) -> float:
+        """Bluff rate conditioned on the opener's desperation state.
+
+        Uses a separate bucket (desperate vs comfortable) based on how many dice
+        the player had when they made their opening bid. Laplace-smoothed to avoid
+        extreme estimates from small samples.
+
+        Falls back to the global _bluff_rate when the relevant bucket has fewer
+        than 3 observations.
+        """
+        bucket = (
+            self._desperate if opener_dice_count <= self.DESPERATION_DICE else self._comfortable
+        )
+        counts = bucket.get(player)
+        if counts is None or counts[0] + counts[1] < 3:
+            return self._bluff_rate(player)
+        bluffs, holds = counts
+        return (bluffs + 1) / (bluffs + holds + 2)
+
     def _update_bluff_obs(self, ctx: GameContext) -> None:
         """Update per-player opening-bid bluff propensity from newly completed rounds.
 
@@ -363,10 +419,62 @@ class EvilStewie:
                 if face != 1 and wilds_on:
                     actual += hands[p].count(1)
 
-                self._bluff_sum[p] += 1.0 if actual < inferred else 0.0
+                is_bluff = actual < inferred
+                self._bluff_sum[p] += 1.0 if is_bluff else 0.0
                 self._bluff_count[p] += 1
+                # Route to desperation bucket based on dice count at opening-bid time
+                bucket = self._desperate if d <= self.DESPERATION_DICE else self._comfortable
+                counts = bucket.setdefault(p, [0, 0])
+                counts[0 if is_bluff else 1] += 1
 
         self._bluff_outcomes_seen = limit
+
+    def _log_outcomes(self, ctx: GameContext) -> None:
+        """Log newly completed round outcomes: who won/lost, whether bids held, calibration check.
+
+        Runs after _update_bluff_obs so _bluff_round_keys and _no_wilds_rounds are current.
+        When ES called liar on the round's final bet, compares its p_holds estimate to reality.
+        """
+        outcomes = ctx.outcomes
+        limit = min(len(outcomes), len(self._bluff_round_keys))
+        for i in range(self._outcomes_logged, limit):
+            outcome = outcomes[i]
+            key = self._bluff_round_keys[i]
+            game_id, round_num = key
+            final_bet = outcome["final_bet"]
+            challenger = outcome["challenger"]
+            hands = outcome["hands"]
+            wilds_on = key not in self._no_wilds_rounds
+
+            face = final_bet.face
+            actual = sum(
+                h.count(face) + (h.count(1) if face != 1 and wilds_on else 0)
+                for h in hands.values()
+            )
+            held = actual >= final_bet.quantity
+            bidder = final_bet.player
+            loser = challenger if held else bidder
+
+            _dlog.debug(
+                f"  [OUTCOME G{game_id} R{round_num}] "
+                f"{bidder}'s {final_bet.quantity}x{face} → {'HELD' if held else 'BUSTED'} "
+                f"(actual={actual}) | {loser} loses die"
+            )
+
+            if key in self._liar_call_estimates:
+                est = self._liar_call_estimates.pop(key)
+                surprise = abs(est - (1.0 if held else 0.0))
+                if held:
+                    verdict = "WRONG" + (
+                        " [TRAPPED]" if est > 0.5 else f" [surprise={surprise:.2f}]"
+                    )
+                else:
+                    verdict = "RIGHT" + (f" [confidence={1 - est:.2f}]" if est < 0.3 else "")
+                _dlog.debug(
+                    f"    [CALIBRATION] ES p_holds_est={est:.3f} → "
+                    f"bid {'held' if held else 'busted'} | {verdict}"
+                )
+        self._outcomes_logged = limit
 
     def _p_call_conditional(
         self, player: str | None, p_holds_pub: float, base_rate: float
@@ -378,7 +486,9 @@ class EvilStewie:
         """
         n = self._ct_count.get(player, 0) if player else 0
         if not n:
-            return 1.0 - (1.0 - base_rate) * p_holds_pub
+            # Fallback prior: riskier bids attract more calls, but cap at 3x base_rate so
+            # known-passive players (challenge_rate≈0) don't get implausibly high call estimates.
+            return min(base_rate * 3, 1.0 - (1.0 - base_rate) * p_holds_pub)
         mean_threshold = self._ct_sum[player] / n
         scale = exp(-self.CHALLENGE_SLOPE * (p_holds_pub - mean_threshold))
         return max(self.MIN_P_CALL, min(1.0, base_rate * scale))
@@ -391,6 +501,15 @@ class EvilStewie:
         """
         return p_holds * self.EV_LOSE_CALL + (1.0 - p_holds) * self.EV_WIN_CALL
 
+    def _log_context(self, ctx: GameContext) -> tuple[int, int]:
+        """Return (game_id, current_round) derived from ctx, for use in decision log labels."""
+        if ctx.bet_history:
+            game_id = ctx.bet_history[-1]["game"]
+        else:
+            game_id = 1
+        current_round = sum(1 for o in ctx.outcomes if o["game"] == game_id) + 1
+        return game_id, current_round
+
     def algo(self, ctx: GameContext) -> Bet | None:
         """Choose the highest-EV action: place a bid or call liar (return None).
 
@@ -400,6 +519,7 @@ class EvilStewie:
         """
         self._update_call_obs(ctx)
         self._update_bluff_obs(ctx)
+        self._log_outcomes(ctx)
 
         hand = ctx.hand
         prior = ctx.prior_bet
@@ -408,6 +528,30 @@ class EvilStewie:
         next_p = self._next_player(ctx)
         wilds = self._wilds_active(ctx)
         opening_bids = self._round_opening_bids(ctx)
+
+        game_id, current_round = self._log_context(ctx)
+        prior_label = f"{prior.quantity}x{prior.face} by {prior.player}" if prior else "None"
+        _dlog.debug(
+            f"=== G{game_id} R{current_round} | hand={sorted(hand)} total={total}"
+            f" wilds={wilds} prior={prior_label} ==="
+        )
+
+        # Log opponent opening bid signals
+        if opening_bids:
+            parts = []
+            for p, (bid_face, eff_qty, d) in opening_bids.items():
+                br = self._conditional_bluff_rate(p, d)
+                parts.append(f"{p}→(face={bid_face} eff_qty={eff_qty:.1f} d={d} bluff={br:.2f})")
+            _dlog.debug(f"  signals: {' | '.join(parts)}")
+
+        # Log next-player challenge estimate
+        challenge_rate = (
+            ctx.stats.challenge_rate.get(next_p, 0.3)
+            if next_p and ctx.stats and ctx.stats.challenge_rate
+            else 0.3
+        )
+        _dlog.debug(f"  next={next_p} challenge_rate={challenge_rate:.2f} p_call={p_call:.2f}")
+
         if prior is None:
             # Late-game aggression: bonus scales with quantity when avg dice/player is low.
             # Prevents EvilStewie from opening too conservatively and getting squeezed when
@@ -415,32 +559,41 @@ class EvilStewie:
             n_players = len(ctx.round_players)
             avg_dice = total / n_players if n_players else total
             late_factor = max(0.0, 1.0 - avg_dice / self.LATE_GAME_AVG_DICE)
+            _dlog.debug(f"  OPENING | avg_dice={avg_dice:.1f} late_factor={late_factor:.2f}")
 
             candidates = [(q, f) for q in range(1, total + 1) for f in range(1, 7)]
-            scored = sorted(
-                (
-                    (
-                        q,
-                        f,
-                        ph := self._p_holds(hand, f, q, total, wilds, opening_bids),
-                        (
-                            pca := self._p_call_conditional(
-                                next_p, self._p_holds_public(f, q, total, wilds), p_call
-                            )
-                        ),
-                        self._ev_bid(ph, pca) + late_factor * self.LATE_GAME_AGGRESSION * q,
-                    )
-                    for q, f in candidates
-                ),
-                key=lambda x: (x[4], x[0], x[1]),
-                reverse=True,
-            )
+            scored = []
+            for q, f in candidates:
+                ph = self._p_holds(hand, f, q, total, wilds, opening_bids)
+                pca = self._p_call_conditional(
+                    next_p, self._p_holds_public(f, q, total, wilds), p_call
+                )
+                bonus = late_factor * self.LATE_GAME_AGGRESSION * q * ph
+                ev = self._ev_bid(ph, pca) + bonus
+                scored.append((q, f, ph, pca, ev))
+            scored.sort(key=lambda x: (x[4], x[0], x[1]), reverse=True)
+
+            _dlog.debug("  top bids (qty,face | p_holds p_call ev):")
+            for q, f, ph, pca, ev in scored[:5]:
+                bonus = late_factor * self.LATE_GAME_AGGRESSION * q * ph
+                _dlog.debug(
+                    f"    {q},{f} | ph={ph:.3f} pc={pca:.3f}"
+                    f" ev={ev - bonus:.3f}+{bonus:.3f}={ev:.3f}"
+                )
+
             best_q, best_f, _, _, best_ev = scored[0]
+            flags = ""
+            if best_f == 1:
+                flags += " [WILDS DISABLED: opening on 1s]"
+            if best_ev < 0:
+                flags += " [TRAPPED: all EVs negative]"
+            _dlog.debug(f"  → BET({best_q},{best_f}) ev={best_ev:.3f}{flags}")
             return Bet(best_q, best_f, self.name)
 
         # Evaluate calling liar vs every valid raise
         p_prior_holds = self._p_holds(hand, prior.face, prior.quantity, total, wilds, opening_bids)
         ev_liar = self._ev_call_liar(p_prior_holds)
+        _dlog.debug(f"  prior p_holds={p_prior_holds:.3f} ev_liar={ev_liar:.3f}")
 
         # Bidding on 1s is only legal if the round was opened on 1s (wilds already off).
         # If wilds are still active, the opening wasn't on 1s, so face=1 is forbidden.
@@ -452,27 +605,27 @@ class EvilStewie:
             if q > prior.quantity or (q == prior.quantity and f > prior.face)
         ]
 
-        scored = sorted(
-            (
-                (
-                    q,
-                    f,
-                    ph := self._p_holds(hand, f, q, total, wilds, opening_bids),
-                    (
-                        pca := self._p_call_conditional(
-                            next_p, self._p_holds_public(f, q, total, wilds), p_call
-                        )
-                    ),
-                    self._ev_bid(ph, pca),
-                )
-                for q, f in candidates
-            ),
-            key=lambda x: (x[4], x[0], x[1]),
-            reverse=True,
-        )
+        scored = []
+        for q, f in candidates:
+            ph = self._p_holds(hand, f, q, total, wilds, opening_bids)
+            pca = self._p_call_conditional(next_p, self._p_holds_public(f, q, total, wilds), p_call)
+            scored.append((q, f, ph, pca, self._ev_bid(ph, pca)))
+        scored.sort(key=lambda x: (x[4], x[0], x[1]), reverse=True)
+
+        _dlog.debug("  top bids (qty,face | p_holds p_call ev):")
+        for q, f, ph, pca, ev in scored[:5]:
+            _dlog.debug(f"    {q},{f} | ph={ph:.3f} pc={pca:.3f} ev={ev:.3f}")
 
         if not candidates or ev_liar > scored[0][4]:
+            best_bid_ev = scored[0][4] if scored else float("-inf")
+            trapped = " [TRAPPED: all EVs negative]" if ev_liar < 0 else ""
+            _dlog.debug(
+                f"  → CALL LIAR [ev_liar={ev_liar:.3f} > best_bid={best_bid_ev:.3f}]{trapped}"
+            )
+            self._liar_call_estimates[(game_id, current_round)] = p_prior_holds
             return None
 
         best_q, best_f, _, _, best_ev = scored[0]
+        ev_flag = " [TRAPPED: all EVs negative]" if best_ev < 0 else ""
+        _dlog.debug(f"  → BET({best_q},{best_f}) ev={best_ev:.3f} [liar_ev={ev_liar:.3f}]{ev_flag}")
         return Bet(best_q, best_f, self.name)
