@@ -217,6 +217,7 @@ players:
         wins: 3195
         games: 24000
         win_pct: 13.3
+    avatar: hdyiihba/Nuke_LaLoosh.png
   Stewie:
     display_name: Stewie
     github_username: zachaustin01
