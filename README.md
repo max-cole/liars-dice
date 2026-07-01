@@ -13,67 +13,69 @@ Interested in competing? **[Visit the Wiki](https://github.com/after2400/liars-d
 ### Premier
 | Player | Season W% | Wins in PRM | Win % Total | Total Wins | Games |
 |--------|-----------|----------------|-------------|------------|-------|
-| The Merovingian | 19.0 | 656 | 29.2 | 1458 | 5000 |
-| The Oracle | 17.3 | 173 | 32.9 | 986 | 3000 |
-| EvilStewie | 15.3 | 2347 | 17.8 | 2668 | 15000 |
-| Deep Thought | 14.3 | 2006 | 15.4 | 2006 | 13000 |
-| Sloane | 7.6 | 4056 | 17.6 | 7737 | 44000 |
-| Peter Beter | 7.0 | 2243 | 15.8 | 2534 | 16000 |
-| Peter Griffin | 6.7 | 2241 | 14.0 | 2241 | 16000 |
-| Nuke LaLoosh | 6.7 | 3148 | 16.2 | 4221 | 26000 |
+| Ripley | 17.3 | 173 | 30.3 | 909 | 3000 |
+| The Merovingian | 16.2 | 818 | 27.0 | 1620 | 6000 |
+| EvilStewie | 15.4 | 2501 | 17.6 | 2822 | 16000 |
+| The Oracle | 14.7 | 320 | 28.3 | 1133 | 4000 |
+| Deep Thought | 13.6 | 2142 | 15.3 | 2142 | 14000 |
+| Peter Beter | 6.6 | 2309 | 15.3 | 2600 | 17000 |
+| Peter Griffin | 5.8 | 2299 | 13.5 | 2299 | 17000 |
+| Sloane | 5.7 | 4113 | 17.3 | 7794 | 45000 |
 
 ### Championship
 | Player | Season W% | Wins in CH | Win % Total | Total Wins | Games |
 |--------|-----------|----------------|-------------|------------|-------|
-| Stewie | Relegated | 365 | 17.8 | 4994 | 28000 |
-| Columbo | 12.9 | 891 | 15.6 | 1400 | 9000 |
-| Cal Culatid | 10.2 | 2570 | 17.2 | 4134 | 24000 |
-| Zara | 9.9 | 4018 | 18.4 | 6433 | 35000 |
-| Eva | 9.3 | 5404 | 18.8 | 6782 | 36000 |
-| Diego | 8.4 | 2622 | 17.3 | 6304 | 36350 |
-| Honest Abe | 7.9 | 2576 | 13.9 | 3049 | 22000 |
-| Remy | 4.5 | 3651 | 16.9 | 8304 | 49000 |
+| Nuke LaLoosh | Relegated | 552 | 15.8 | 4268 | 27000 |
+| Columbo | 12.4 | 1015 | 15.2 | 1524 | 10000 |
+| Stewie | 12.0 | 485 | 17.6 | 5114 | 29000 |
+| Diego | 10.5 | 2727 | 17.2 | 6409 | 37350 |
+| Zara | 9.2 | 4110 | 18.1 | 6525 | 36000 |
+| Cal Culatid | 8.9 | 2659 | 16.9 | 4223 | 25000 |
+| Honest Abe | 8.6 | 2662 | 13.6 | 3135 | 23000 |
+| Eva | 8.1 | 5485 | 18.5 | 6863 | 37000 |
 
 ### Level 1
 | Player | Season W% | Wins in L1 | Win % Total | Total Wins | Games |
 |--------|-----------|----------------|-------------|------------|-------|
-| Finn | 12.7 | 3857 | 16.8 | 6597 | 39250 |
-| Rick Sanchez | 12.0 | 3488 | 16.6 | 3488 | 21000 |
-| Alice | 9.9 | 4244 | 15.5 | 5337 | 34450 |
-| Bruno | 8.1 | 3204 | 12.4 | 4159 | 33450 |
-| Meg Griffin | 7.4 | 524 | 10.5 | 524 | 5000 |
-| Liar², Pants on Fire | 2.4 | 1000 | 4.0 | 1000 | 25000 |
-| Topper | 2.2 | 2364 | 7.9 | 2364 | 30000 |
-| Cleo | 0.9 | 1695 | 5.0 | 1712 | 34450 |
+| Remy | Relegated | 4441 | 16.7 | 8346 | 50000 |
+| Finn | 12.0 | 3977 | 16.7 | 6717 | 40250 |
+| Rick Sanchez | 11.1 | 3599 | 16.4 | 3599 | 22000 |
+| Bruno | 9.0 | 3294 | 12.3 | 4249 | 34450 |
+| Alice | 8.1 | 4325 | 15.3 | 5418 | 35450 |
+| Meg Griffin | 7.6 | 600 | 10.0 | 600 | 6000 |
+| Topper | 2.3 | 2387 | 7.7 | 2387 | 31000 |
+| Liar², Pants on Fire | 2.0 | 1020 | 3.9 | 1020 | 26000 |
+| Cleo | 0.4 | 1699 | 4.8 | 1716 | 35450 |
 
 ### Quarter Leaderboard
 
 | Player | Tier | PRM W% | CH W% | L1 W% | Total W% | Games |
 |--------|------|--------|-------|-------|----------|-------|
-| The Merovingian | Premier | 21.9 | 33.4 | 46.8 | 29.2 | 5000 |
-| Zara | Championship | 20.1 | 17.5 | — | 18.4 | 35000 |
-| Diego | Championship | 18.1 | 16.4 | — | 17.3 | 36350 |
-| The Oracle | Premier | 17.3 | 36.9 | 44.4 | 32.9 | 3000 |
-| Eva | Championship | 17.2 | 19.3 | — | 18.8 | 36000 |
-| EvilStewie | Premier | 16.8 | 32.1 | — | 17.8 | 15000 |
-| Stewie | Championship | 16.7 | 36.5 | 28.8 | 17.8 | 28000 |
-| Deep Thought | Premier | 15.4 | — | — | 15.4 | 13000 |
-| Peter Beter | Premier | 15.0 | 29.1 | — | 15.8 | 16000 |
-| Alice | Level 1 | 14.8 | 12.6 | 16.3 | 15.5 | 34450 |
-| Sloane | Premier | 14.5 | 23.0 | — | 17.6 | 44000 |
-| Finn | Level 1 | 14.0 | 12.7 | 21.4 | 16.8 | 39250 |
-| Peter Griffin | Premier | 14.0 | — | — | 14.0 | 16000 |
-| Nuke LaLoosh | Premier | 13.7 | 27.6 | 52.1 | 16.2 | 26000 |
-| Cal Culatid | Championship | 12.8 | 17.1 | 26.5 | 17.2 | 24000 |
-| Bruno | Level 1 | 10.9 | 13.8 | 12.3 | 12.4 | 33450 |
-| Remy | Championship | 10.6 | 13.5 | 22.2 | 16.9 | 49000 |
-| Columbo | Championship | 7.2 | 17.8 | 29.3 | 15.6 | 9000 |
-| Cleo | Level 1 | 1.1 | 0.3 | 5.7 | 5.0 | 34450 |
-| Honest Abe | Championship | — | 12.9 | 23.6 | 13.9 | 22000 |
-| Rick Sanchez | Level 1 | — | — | 16.6 | 16.6 | 21000 |
-| Meg Griffin | Level 1 | — | — | 10.5 | 10.5 | 5000 |
-| Topper | Level 1 | — | — | 7.9 | 7.9 | 30000 |
-| Liar², Pants on Fire | Level 1 | — | — | 4.0 | 4.0 | 25000 |
+| The Merovingian | Premier | 20.4 | 33.4 | 46.8 | 27.0 | 6000 |
+| Zara | Championship | 20.1 | 17.1 | — | 18.1 | 36000 |
+| Diego | Championship | 18.1 | 16.0 | — | 17.2 | 37350 |
+| Ripley | Premier | 17.3 | 26.1 | 47.5 | 30.3 | 3000 |
+| Eva | Championship | 17.2 | 18.9 | — | 18.5 | 37000 |
+| EvilStewie | Premier | 16.7 | 32.1 | — | 17.6 | 16000 |
+| Stewie | Championship | 16.7 | 24.2 | 28.8 | 17.6 | 29000 |
+| The Oracle | Premier | 16.0 | 36.9 | 44.4 | 28.3 | 4000 |
+| Deep Thought | Premier | 15.3 | — | — | 15.3 | 14000 |
+| Alice | Level 1 | 14.8 | 12.6 | 16.0 | 15.3 | 35450 |
+| Peter Beter | Premier | 14.4 | 29.1 | — | 15.3 | 17000 |
+| Sloane | Premier | 14.2 | 23.0 | — | 17.3 | 45000 |
+| Finn | Level 1 | 14.0 | 12.7 | 20.9 | 16.7 | 40250 |
+| Peter Griffin | Premier | 13.5 | — | — | 13.5 | 17000 |
+| Nuke LaLoosh | Championship | 13.3 | 27.6 | 52.1 | 15.8 | 27000 |
+| Cal Culatid | Championship | 12.8 | 16.6 | 26.5 | 16.9 | 25000 |
+| Bruno | Level 1 | 10.9 | 13.8 | 12.2 | 12.3 | 34450 |
+| Remy | Level 1 | 10.6 | 13.2 | 22.2 | 16.7 | 50000 |
+| Columbo | Championship | 7.2 | 16.9 | 29.3 | 15.2 | 10000 |
+| Cleo | Level 1 | 1.1 | 0.3 | 5.5 | 4.8 | 35450 |
+| Honest Abe | Championship | — | 12.7 | 23.6 | 13.6 | 23000 |
+| Rick Sanchez | Level 1 | — | — | 16.4 | 16.4 | 22000 |
+| Meg Griffin | Level 1 | — | — | 10.0 | 10.0 | 6000 |
+| Topper | Level 1 | — | — | 7.7 | 7.7 | 31000 |
+| Liar², Pants on Fire | Level 1 | — | — | 3.9 | 3.9 | 26000 |
 
 <!-- leaderboard-end -->
 <!-- prettier-ignore-end -->
