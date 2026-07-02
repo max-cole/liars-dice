@@ -1,5 +1,5 @@
 total_runs: 108
-last_updated: '2026-07-02T12:00:07Z'
+last_updated: '2026-07-02T16:34:47Z'
 current_season_issue: 4
 players:
   Alice:
@@ -458,3 +458,11 @@ players:
         wins: 185
         games: 2000
         win_pct: 9.2
+  Shwimpevwild:
+    display_name: Shwimp
+    github_username: dills122
+    date_added: '2026-07-02T16:34:47Z'
+    tier: L1
+    tier_since: '2026-07-02T16:34:47Z'
+    times_inactive: 0
+    tier_stats: {}
