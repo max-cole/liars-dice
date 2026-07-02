@@ -416,6 +416,7 @@ players:
         wins: 622
         games: 4000
         win_pct: 15.6
+    avatar: dfcgw5cr6/The_Oracle.gif
   Ripley:
     display_name: Ripley
     github_username: iappanaitis
