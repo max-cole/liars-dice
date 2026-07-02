@@ -286,6 +286,7 @@ players:
         wins: 768
         games: 6000
         win_pct: 12.8
+    avatar: dfcgw5cr6/Cal_Culatid.jpg
   PeterGriffin:
     display_name: Peter Griffin
     github_username: DNiev
