@@ -1,6 +1,21 @@
 # CHANGELOG
 
 
+## v2.7.4 (2026-07-06)
+
+### Bug Fixes
+
+- **engine**: Wire README updates into tournament reset; fix expulsion chmod-timing bug
+  ([#190](https://github.com/after2400/liars-dice/pull/190),
+  [`331ec66`](https://github.com/after2400/liars-dice/commit/331ec66156279dacbacbeea06673185bcf676f27))
+
+### Chores
+
+- **leaderboard**: Reset Q3 tournament_state for a clean re-run
+  ([#188](https://github.com/after2400/liars-dice/pull/188),
+  [`ffdc712`](https://github.com/after2400/liars-dice/commit/ffdc712854f1bed3b7c082a9f7730d3b1d898c17))
+
+
 ## v2.7.3 (2026-07-06)
 
 ### Bug Fixes
