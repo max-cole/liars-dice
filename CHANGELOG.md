@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v2.7.0 (2026-07-06)
+
+### Features
+
+- **security**: Implement runtime hardening and automated expulsion system
+  ([#182](https://github.com/after2400/liars-dice/pull/182),
+  [`df799f6`](https://github.com/after2400/liars-dice/commit/df799f67c6e10cc88f6c8c5fecfa13f53c3a7c8f))
+
+
 ## v2.6.0 (2026-07-02)
 
 ### Features
