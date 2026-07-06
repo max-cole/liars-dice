@@ -1,21 +1,21 @@
 total_runs: 120
-last_updated: '2026-07-06T20:43:21Z'
-current_season_issue: 186
+last_updated: '2026-07-06T21:44:06Z'
+current_season_issue: 189
 players:
   Alice:
     display_name: Alice
     github_username: zachaustin01
     date_added: '2026-05-22T15:47:31Z'
     tier: L1
-    tier_since: '2026-06-18T04:09:43Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Bruno:
     display_name: Bruno
     github_username: zachaustin01
     date_added: '2026-05-22T15:47:31Z'
-    tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier: L1
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Cleo:
@@ -23,7 +23,7 @@ players:
     github_username: zachaustin01
     date_added: '2026-05-22T15:47:31Z'
     tier: L1
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Diego:
@@ -31,15 +31,15 @@ players:
     github_username: zachaustin01
     date_added: '2026-05-22T16:10:13Z'
     tier: CH
-    tier_since: '2026-06-29T13:04:24Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Finn:
     display_name: Finn
     github_username: after2400
     date_added: '2026-06-08T20:41:19Z'
-    tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier: L1
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Finn_Carter.png
@@ -48,7 +48,7 @@ players:
     github_username: after2400
     date_added: '2026-06-09T20:12:00Z'
     tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Eva_Longoria.png
@@ -57,7 +57,7 @@ players:
     github_username: after2400
     date_added: '2026-06-09T20:12:00Z'
     tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Sloane_Avery.png
@@ -66,7 +66,7 @@ players:
     github_username: after2400
     date_added: '2026-06-09T20:12:00Z'
     tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Zara.png
@@ -75,7 +75,7 @@ players:
     github_username: after2400
     date_added: '2026-06-09T20:12:00Z'
     tier: L1
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Remy_Beasley.png
@@ -84,7 +84,7 @@ players:
     github_username: after2400
     date_added: '2026-06-11T03:29:08Z'
     tier: L1
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Topper.png
@@ -93,7 +93,7 @@ players:
     github_username: after2400
     date_added: '2026-06-11T03:32:43Z'
     tier: L1
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Liar_Liar.png
@@ -102,7 +102,7 @@ players:
     github_username: after2400
     date_added: '2026-06-16T04:17:48Z'
     tier: L1
-    tier_since: '2026-07-04T11:23:08Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Nuke_LaLoosh.png
@@ -110,8 +110,8 @@ players:
     display_name: Stewie
     github_username: zachaustin01
     date_added: '2026-06-17T20:24:22Z'
-    tier: PRM
-    tier_since: '2026-07-02T11:30:25Z'
+    tier: CH
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Rick:
@@ -119,7 +119,7 @@ players:
     github_username: zachaustin01
     date_added: '2026-06-17T21:58:43Z'
     tier: L1
-    tier_since: '2026-06-17T21:58:43Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   HonestAbe:
@@ -127,7 +127,7 @@ players:
     github_username: DNiev
     date_added: '2026-06-18T01:30:55Z'
     tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: dfcgw5cr6/Honest_Abe.jpg
@@ -135,8 +135,8 @@ players:
     display_name: Cal Culatid
     github_username: DNiev
     date_added: '2026-06-18T03:28:08Z'
-    tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier: L1
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: dfcgw5cr6/Cal_Culatid.jpg
@@ -144,24 +144,24 @@ players:
     display_name: Peter Griffin
     github_username: DNiev
     date_added: '2026-06-18T23:29:14Z'
-    tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier: CH
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   PeterBeter:
     display_name: Peter Beter
     github_username: DNiev
     date_added: '2026-06-19T12:30:06Z'
-    tier: CH
-    tier_since: '2026-07-06T20:43:20Z'
+    tier: PRM
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   DeepThought:
     display_name: Deep Thought
     github_username: DNiev
     date_added: '2026-06-20T02:45:04Z'
-    tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier: CH
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: dfcgw5cr6/Deep_Thought.jpg
@@ -170,7 +170,7 @@ players:
     github_username: zachaustin01
     date_added: '2026-06-22T20:35:12Z'
     tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Meg:
@@ -178,7 +178,7 @@ players:
     github_username: after2400
     date_added: '2026-06-25T03:17:47Z'
     tier: L1
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/Meg_Griffin.png
@@ -187,7 +187,7 @@ players:
     github_username: iappanaitis
     date_added: '2026-06-29T20:41:43Z'
     tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Merovingian:
@@ -195,7 +195,7 @@ players:
     github_username: after2400
     date_added: '2026-07-01T07:24:06Z'
     tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: hdyiihba/The_Merovingian.png
@@ -204,7 +204,7 @@ players:
     github_username: DNiev
     date_added: '2026-07-01T20:10:41Z'
     tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: dfcgw5cr6/The_Oracle.gif
@@ -213,7 +213,7 @@ players:
     github_username: iappanaitis
     date_added: '2026-07-01T20:51:17Z'
     tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
   Hal:
@@ -221,7 +221,7 @@ players:
     github_username: fransposito
     date_added: '2026-07-01T23:05:55Z'
     tier: PRM
-    tier_since: '2026-07-06T20:43:20Z'
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
     avatar: rzifhdkf/HAL_9000.png
@@ -229,7 +229,42 @@ players:
     display_name: Shwimp
     github_username: dills122
     date_added: '2026-07-02T16:34:47Z'
-    tier: CH
-    tier_since: '2026-07-06T06:06:57Z'
+    tier: PRM
+    tier_since: '2026-07-06T21:44:04Z'
     times_inactive: 0
     tier_stats: {}
+tournament_state:
+  quarter: 2026-Q3
+  pool_results:
+    pool_0:
+      Hal: 231
+      Nuke: 94
+      CalCulated: 94
+      Pyro: 2
+      Ripley: 336
+      HonestAbe: 121
+      Stewie: 122
+    pool_1:
+      Oracle: 332
+      Rick: 69
+      Bruno: 49
+      PeterGriffin: 164
+      Zara: 159
+      Topper: 9
+      PeterBeter: 218
+    pool_2:
+      Merovingian: 281
+      Shwimpevwild: 241
+      Sloane: 135
+      Remy: 45
+      Diego: 107
+      Meg: 16
+      DeepThought: 175
+    pool_3:
+      Eva: 194
+      Cleo: 1
+      Alice: 63
+      Columbo: 201
+      Finn: 102
+      EvilStewie: 439
+  issue_created: true
