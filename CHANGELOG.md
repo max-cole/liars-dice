@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v2.7.3 (2026-07-06)
+
+### Bug Fixes
+
+- **engine**: Retry a tier/pool excluding the offender instead of discarding it
+  ([#187](https://github.com/after2400/liars-dice/pull/187),
+  [`440eceb`](https://github.com/after2400/liars-dice/commit/440eceb7dda04161221462b45b07cf397396c0a4))
+
+
 ## v2.7.2 (2026-07-06)
 
 ### Bug Fixes
