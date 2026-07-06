@@ -1,5 +1,5 @@
 total_runs: 117
-last_updated: '2026-07-04T11:23:08Z'
+last_updated: '2026-07-06T06:05:29Z'
 current_season_issue: 4
 players:
   Alice:
@@ -484,3 +484,12 @@ players:
         wins: 196
         games: 2000
         win_pct: 9.8
+  agent_smith:
+    display_name: Agent Smith
+    github_username: after2400
+    date_added: '2026-07-06T06:05:29Z'
+    tier: L1
+    tier_since: '2026-07-06T06:05:29Z'
+    times_inactive: 0
+    tier_stats: {}
+    avatar: hdyiihba/Agent_Smith.png
