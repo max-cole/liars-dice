@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v2.7.2 (2026-07-06)
+
+### Bug Fixes
+
+- **scripts**: Wire tournament pools into expulsion; fix gh issue create
+  ([#185](https://github.com/after2400/liars-dice/pull/185),
+  [`ae5a42e`](https://github.com/after2400/liars-dice/commit/ae5a42ed7da881d2c87d70817b241b53d38b7c2f))
+
+
 ## v2.7.1 (2026-07-06)
 
 ### Bug Fixes
