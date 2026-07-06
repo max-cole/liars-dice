@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v2.7.1 (2026-07-06)
+
+### Bug Fixes
+
+- **engine**: Repair broken security hardening that crashed today's tournament
+  ([#184](https://github.com/after2400/liars-dice/pull/184),
+  [`bed1d29`](https://github.com/after2400/liars-dice/commit/bed1d29bd6797ad26b9f8d31e7678b123ea4c018))
+
+
 ## v2.7.0 (2026-07-06)
 
 ### Features
