@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v2.7.5 (2026-07-08)
+
+### Bug Fixes
+
+- **engine**: Render Player Performance table as markdown, not fixed-width text
+  ([#191](https://github.com/after2400/liars-dice/pull/191),
+  [`6559dfd`](https://github.com/after2400/liars-dice/commit/6559dfde40e229525edbf18bf09f336d2be13a19))
+
+
 ## v2.7.4 (2026-07-06)
 
 ### Bug Fixes

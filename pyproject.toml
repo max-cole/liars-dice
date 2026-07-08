@@ -1,6 +1,6 @@
 [project]
 name = "liars-dice"
-version = "2.7.4"
+version = "2.7.5"
 requires-python = ">=3.11"
 dependencies = ["pandas", "pyyaml", "rich", "textual>=1.0"]
 
