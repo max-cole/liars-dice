@@ -1,5 +1,5 @@
 total_runs: 138
-last_updated: '2026-07-20T11:49:55Z'
+last_updated: '2026-07-20T19:26:17Z'
 current_season_issue: 189
 players:
   Alice:
@@ -369,6 +369,14 @@ players:
         wins: 564
         games: 6000
         win_pct: 9.4
+  Littlefinger:
+    display_name: Littlefinger
+    github_username: max-cole
+    date_added: '2026-07-20T19:26:17Z'
+    tier: L1
+    tier_since: '2026-07-20T19:26:17Z'
+    times_inactive: 0
+    tier_stats: {}
 tournament_state:
   quarter: 2026-Q3
   pool_results:
