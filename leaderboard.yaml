@@ -1,5 +1,5 @@
 total_runs: 144
-last_updated: '2026-07-21T11:13:55Z'
+last_updated: '2026-07-22T01:16:14Z'
 current_season_issue: 189
 players:
   Alice:
@@ -401,6 +401,14 @@ players:
         wins: 180
         games: 2000
         win_pct: 9.0
+  Varys:
+    display_name: Varys
+    github_username: max-cole
+    date_added: '2026-07-22T01:16:14Z'
+    tier: L1
+    tier_since: '2026-07-22T01:16:14Z'
+    times_inactive: 0
+    tier_stats: {}
 tournament_state:
   quarter: 2026-Q3
   pool_results:
